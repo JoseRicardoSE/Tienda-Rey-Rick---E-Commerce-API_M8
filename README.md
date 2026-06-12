@@ -17,6 +17,26 @@ Backend RESTful y Frontend híbrido para **Tienda Rey Rick**, construido con Nod
 - **Validación de Stock**: Lógica de verificación en tiempo real de stock al momento de añadir productos y realizar checkout.
 - **Transacciones Seguras**: El registro de usuarios garantiza la creación simultánea del usuario y su carrito mediante `sequelize.transaction()`.
 
+## 🏗️ Arquitectura y Estructura del Proyecto
+
+Este proyecto sigue una arquitectura **Layered (por capas)** basada en el patrón **MVC**, diseñada para ser escalable, mantenible y profesional:
+
+1. **Separación de Responsabilidades (Layered Architecture)**:
+   - **Rutas (`routes/`)**: Dedicadas exclusivamente a dirigir el tráfico de la API y las vistas.
+   - **Controladores (`controllers/`)**: Funciones limpias que procesan las solicitudes HTTP, delegan el procesamiento y devuelven respuestas estandarizadas.
+   - **Servicios (`services/`)**: Capa donde se aísla la verdadera lógica de negocio (como el registro, la encriptación y validación de usuarios). Esto facilita la realización de pruebas unitarias y evita la saturación de los controladores.
+
+2. **MVC en el Frontend (`views/` y `public/`)**:
+   - Vistas dinámicas creadas con Handlebars, dividiendo inteligentemente los *layouts* principales (`main.handlebars`) de las vistas parciales (`home`, `login`, `cart`).
+   - Assets estáticos organizados eficientemente (`css/`, `js/`, `images/`).
+
+3. **Middlewares y Utils Aislados**:
+   - **Manejo de Errores**: Centralizado en `utils/ApiError` y en `error.middleware.js`, evitando llenar el código de bloques `try/catch` redundantes (apoyado por `asyncHandler.js`).
+   - **Seguridad Encapsulada**: JWT protegido y manejado con middlewares (`auth.middleware.js`) y las validaciones de entrada separadas en su propia carpeta (`validations/`).
+
+4. **Modelos Centralizados (`models/`)**:
+   - Un archivo `index.js` gestiona de manera central y magistral las asociaciones de Sequelize (relación 1 a 1 entre `User` y `Cart`, y 1 a muchos entre `Cart` y `CartItem`).
+
 ## 🛠 Instalación y Configuración
 
 1. **Clonar el repositorio** e instalar dependencias:
