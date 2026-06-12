@@ -79,4 +79,4 @@ Este proyecto sigue una arquitectura **Layered (por capas)** basada en el patró
 
 A continuación, una prueba automatizada del flujo completo (Registro, Login, Añadir al Carrito y Checkout exitoso):
 
-![Demo Tienda Rey Rick](./src/public/assets/images/demo.webp)
+![Demo Tienda Rey Rick](https://raw.githubusercontent.com/JoseRicardoSE/Tienda-Rey-Rick---E-Commerce-API_M8/main/src/public/assets/images/demo.gif)
